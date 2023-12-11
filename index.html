@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Wipei - Cuotas sin tarjeta</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Comprá y vendé online en cuotas sin tarjeta de crédito. Medio de pago y link de pago. Rápido, simple y seguro. ¡Democraticemos el e-commerce!"
+    />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="preload" href="./index.js" as="script" />
+    <link rel="preload" href="./vendor.js" as="script" />
+    <link rel="preload" href="styles.index.css" as="style" />
+    <link rel="stylesheet" href="styles.index.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <script src="./vendor.js"></script>
+    <!-- Google Tag Manager-->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-WQ4HQD5");
+    </script>
+    <!-- End Google Tag Manager-->
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript)--><noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-WQ4HQD5"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe></noscript
+    ><!-- End Google Tag Manager (noscript)--><noscript
+      ><img
+        height="1"
+        width="1"
+        style="display: none"
+        alt=""
+        src="https://dc.ads.linkedin.com/collect/?pid=652377&amp;fmt=gif"
+    /></noscript>
+    <div id="app" v-cloak>
+      <navbar></navbar><navbar-responsive></navbar-responsive>
+      <div class="main">
+        <div class="main-section">
+          <h1 class="main-title-big m-bottom-2">{{ $t('index.title') }}</h1>
+          <h2 class="secondary-title white slim subtitle">
+            {{ $t('index.subtitle') }}
+          </h2>
+          <a class="register-button m-top-4" href="/register.html"
+            >{{ $t('index.joinNow') }}</a
+          >
+        </div>
+        <div class="explanation-section">
+          <p
+            class="explanation text-big grey"
+            v-html="$t('index.explanation')"
+          ></p>
+          <p
+            class="explanation text-big grey m-top-2"
+            v-html="$t('index.explanation2')"
+          ></p>
+        </div>
+        <div class="image-section">
+          <img
+            class="explanation-image"
+            src="assets/icons_compra.png"
+            alt="buy-wipei"
+          />
+        </div>
+        <div class="reasons-container">
+          <h2 class="secondary-title m-bottom-10 bold decoration">
+            {{ $t('index.reasons.title') }}
+          </h2>
+          <div class="wipei-row space-between wipei-col-sm">
+            <div class="reason" v-for="(reason, index) in reasons" :key="index">
+              <img
+                class="reason-icon"
+                :src="reason.image"
+                :alt="reason.title"
+              />
+              <h5 class="reason-title">{{ $t(reason.title) }}</h5>
+              <p class="text-normal grey open-sans">
+                {{ $t(reason.description) }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <carousel></carousel><how-it-works :steps="steps"></how-it-works>
+        <div class="tell-more">
+          <div class="column">
+            <h2 class="white m-right-8 text-xbig m-0-sm text-center">
+              {{ $t('index.tellMore.title1') }}
+            </h2>
+            <h2
+              class="white m-right-8 text-xbig m-0-sm text-center"
+              v-html="$t('index.tellMore.title2')"
+            ></h2>
+          </div>
+          <a class="button-white m-bottom-2 m-top-2" href="/sellers.html"
+            >{{ $t('index.tellMore.button') }}</a
+          >
+        </div>
+        <frequent-asked
+          :questions="questions"
+          :extras="extraFAQ"
+        ></frequent-asked>
+      </div>
+      <footer class="footer">
+        <contact></contact>
+        <div class="information-container">
+          <div class="wipei-row space-between top wipei-col-sm">
+            <div class="wipei-row baseline">
+              <h1 class="footer-title bolder">{{ $t('wipei') }}</h1>
+              <h2 class="text-normal light-blue uppercase bolder">
+                {{ $t('footer.withoutCard') }}
+              </h2>
+            </div>
+            <span class="text-normal grey m-top-3 rights"
+              >{{ $t('footer.rightsReserved') }}</span
+            >
+            <div class="socials">
+              <a
+                class="social"
+                target="_blank"
+                rel="noopener"
+                href="https://facebook.com/wipei.cuotas"
+                ><img
+                  class="social-icon"
+                  src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NSA0NSI+PGcgZGF0YS1uYW1lPSJHcm91cCAyNCI+PGcgZGF0YS1uYW1lPSJFbGxpcHNlIDUiIHN0cm9rZT0iIzQ2ZTg5NSIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIj48Y2lyY2xlIGN4PSIyMi41IiBjeT0iMjIuNSIgcj0iMjIuNSIgc3Ryb2tlPSJub25lIi8+PGNpcmNsZSBjeD0iMjIuNSIgY3k9IjIyLjUiIHI9IjIxIi8+PC9nPjxwYXRoIGRhdGEtbmFtZT0i74KaIiBkPSJNMjcuODkyIDEwLjkwNXYzLjYzNWgtMi4xNjFjLTEuNjkzIDAtMi4wMS44MTItMi4wMSAxLjk4MnYyLjZoNC4wMzNsLS41MzcgNC4wNzRoLTMuNVYzMy42NEgxOS41MVYyMy4xOTZIMTZ2LTQuMDc0aDMuNTF2LTNjMC0zLjQ4MiAyLjEzMy01LjM4MiA1LjI0NC01LjM4MmEyNi45NzIgMjYuOTcyIDAgMDEzLjEzOC4xNjV6IiBmaWxsPSIjNDZlODk1Ii8+PC9nPjwvc3ZnPg=="
+                  alt="wipei-fb" /></a
+              ><a
+                class="social"
+                target="_blank"
+                rel="noopener"
+                href="https://instagram.com/wipei.cuotas"
+                ><img
+                  class="social-icon"
+                  src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NSA0NSI+PGcgZGF0YS1uYW1lPSJHcm91cCAyMyI+PHBhdGggZGF0YS1uYW1lPSLvha0iIGQ9Ik0yNC4xNjEgMzMuNjRoLTIuNDJjLTEuMTI1IDAtMi40MzMtLjAwNi0zLjcyNC0uMDc5YTcuMDYzIDcuMDYzIDAgMDEtNS4wMS0xLjkzIDcuMDY0IDcuMDY0IDAgMDEtMS45My01LjAxMWMtLjA3OC0xLjQ0Mi0uMDc4LTIuOTA2LS4wNzgtNC4zMjJ2LTEuMjEyYzAtMS40MTYgMC0yLjg4LjA3OS00LjMyN2E3LjA2MyA3LjA2MyAwIDAxMS45My01LjAxIDcuMDYzIDcuMDYzIDAgMDE1LjAxLTEuOTNjMS4yOS0uMDczIDIuNTk4LS4wNzkgMy43MjMtLjA3OWgyLjQxOWMxLjEyNSAwIDIuNDMzLjAwNiAzLjcyMy4wNzlhNy4wNjQgNy4wNjQgMCAwMTUuMDE2IDEuOTMgNy4wNjMgNy4wNjMgMCAwMTEuOTMgNS4wMWMuMDgxIDEuNDQ3LjA4IDIuOTExLjA3OCA0LjMyN3YxLjIxMmMwIDEuNDE2IDAgMi44OC0uMDc4IDQuMzI2YTcuMDY0IDcuMDY0IDAgMDEtMS45MyA1LjAxNiA3LjA2NCA3LjA2NCAwIDAxLTUuMDExIDEuOTNjLTEuMjk0LjA3LTIuNjAyLjA3LTMuNzI3LjA3em0tMS4yMS0yLjE0OGMuMjY5IDAgLjU4OCAwIC44MzcuMDA2aC4wOTNjLjM0NSAwIC43MzYuMDA3IDEuMTQuMDA3YTE3LjA1NyAxNy4wNTcgMCAwMDQuOTc5LS41IDQuMDc1IDQuMDc1IDAgMDAyLjI3Mi0yLjI2NWMuNTM1LTEuMzUuNTA3LTQuMjcyLjQ4OS02LjIwNnYtLjAwN2MwLS4yNDgtLjAwNi0uNTY4LS4wMDYtLjgzN3MwLS41ODguMDA2LS44Mzd2LS4wMDdjLjAxOC0xLjkzNC4wNDYtNC44NTYtLjQ4OS02LjIwNmEzLjgzOSAzLjgzOSAwIDAwLS45LTEuMzY5IDMuODMyIDMuODMyIDAgMDAtMS4zNzMtLjkgMTcuMDU3IDE3LjA1NyAwIDAwLTQuOTc5LS41Yy0uNCAwLS44IDAtMS4xNC4wMDdoLS4wOTNjLS4yNDggMC0uNTY4LjAwNi0uODM3LjAwNnMtLjU4OCAwLS44MzctLjAwNmgtLjA5M2MtLjM0NSAwLS43MzYtLjAwNy0xLjE0LS4wMDdhMTcuMDU3IDE3LjA1NyAwIDAwLTQuOTc5LjUgMy44MzIgMy44MzIgMCAwMC0xLjM2OS45IDMuODMyIDMuODMyIDAgMDAtLjkgMS4zNjljLS41MzUgMS4zNS0uNTA3IDQuMjcyLS40ODkgNi4yMDZ2LjAwN2MwIC4yNDguMDA2LjU2OC4wMDYuODM3czAgLjU4OC0uMDA2LjgzN3YuMDEzYy0uMDIgMS45MjktLjA0NCA0Ljg1MS40ODcgNi4yYTMuODMyIDMuODMyIDAgMDAuOSAxLjM2OSAzLjgzOSAzLjgzOSAwIDAwMS4zNjkuOSAxNy4wNTcgMTcuMDU3IDAgMDA0Ljk3OS41Yy40IDAgLjggMCAxLjE0LS4wMDdoLjA5M2MuMjUyLS4wMDMuNTcxLS4wMDYuODQtLjAwNnptMC0zLjY3M2E2LjEyNCA2LjEyNCAwIDExNC4zMzgtMS43ODkgNi4wOSA2LjA5IDAgMDEtNC4zMzggMS43OTN6bTAtMTAuMTE1YTMuOTg0IDMuOTg0IDAgMTAzLjk4NCAzLjk4NCAzLjk4OCAzLjk4OCAwIDAwLTMuOTg0LTMuOTh6bTYuMzgtLjk2NGExLjQzMiAxLjQzMiAwIDExMS40MzItMS40MzIgMS40MzMgMS40MzMgMCAwMS0xLjQzMiAxLjQzMnoiIGZpbGw9IiM0NmU4OTUiLz48ZyBkYXRhLW5hbWU9IkVsbGlwc2UgNiIgc3Ryb2tlPSIjNDZlODk1IiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9Im5vbmUiPjxjaXJjbGUgY3g9IjIyLjUiIGN5PSIyMi41IiByPSIyMi41IiBzdHJva2U9Im5vbmUiLz48Y2lyY2xlIGN4PSIyMi41IiBjeT0iMjIuNSIgcj0iMjEiLz48L2c+PC9nPjwvc3ZnPg=="
+                  alt="wipei-ig"
+              /></a>
+            </div>
+          </div>
+          <div class="legal-container wipei-row wipei-col-sm">
+            <div class="column">
+              <p class="text-small grey m-bottom-2">
+                {{ $t('footer.legals1') }}
+              </p>
+              <p class="text-small grey m-bottom-2">
+                {{ $t('footer.legals2') }}
+              </p>
+            </div>
+            <div class="column">
+              <p class="text-small grey m-bottom-2">
+                {{ $t('footer.legals3') }}
+              </p>
+              <p
+                class="text-small grey m-bottom-2"
+                v-html='$t("footer.legals5")'
+              ></p>
+              <p class="text-small grey m-bottom-2">
+                {{ $t('footer.legals6') }}
+              </p>
+              <p class="text-small grey m-bottom-2">
+                {{ $t('footer.legals7') }}
+              </p>
+              <p
+                class="text-small grey m-bottom-2"
+                v-html='$t("footer.legals8")'
+              ></p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="./index.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
